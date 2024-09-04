@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <!-- ListView для отображения элементов плейлиста -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- TextView для названия плейлиста -->
+        <TextView
+            android:id="@+id/playlist_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Название плейлиста"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"
+            />
+
+        <!-- ListView для отображения элементов плейлиста -->
+        <ListView
+            android:id="@+id/playlist_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <!-- Bottom player layout for song controls -->
+    <RelativeLayout
+        android:id="@+id/playerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/mini_player"
+        android:elevation="4dp"
+        android:padding="8dp"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/album_cover"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundedImageView" />
+
+        <!-- Название песни -->
+        <TextView
+            android:id="@+id/song_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="8dp"
+            android:layout_toEndOf="@id/album_cover"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Неизвестно"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- Исполнитель -->
+        <TextView
+            android:id="@+id/artist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/song_title"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/album_cover"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Неизвестно"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <ImageButton
+            android:id="@+id/prev_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="136dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:background="@null" />
+
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="14dp"
+            android:layout_toStartOf="@id/next_button"
+            android:src="@android:drawable/ic_media_play"
+            android:background="@null" />
+
+        <ImageButton
+            android:id="@+id/next_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="14dp"
+            android:layout_toStartOf="@id/addButton"
+            android:src="@android:drawable/ic_media_next"
+            android:background="@null" />
+
+        <!-- Кнопка добавления -->
+        <ImageButton
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5.5dp"
+            android:layout_marginTop="5.5dp"
+            android:layout_marginEnd="5.5dp"
+            android:layout_marginBottom="5.5dp"
+            android:background="@null"
+            android:src="@android:drawable/ic_input_add"
+            app:tint="@color/white" />
+    </RelativeLayout>
+
+</FrameLayout>

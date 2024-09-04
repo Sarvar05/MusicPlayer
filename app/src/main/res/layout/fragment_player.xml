@@ -1,0 +1,189 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Верхняя навигационная панель -->
+    <RelativeLayout
+        android:id="@+id/top_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:padding="8dp">
+
+        <!-- SeekBar для громкости (вертикальный) -->
+        <SeekBar
+            android:id="@+id/volume_seek_bar"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="53dp"
+            android:max="100"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:progress="50" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Альбомная обложка -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/album_art"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp"
+        android:scaleType="centerCrop"
+        app:strokeColor="@color/black"
+        app:shapeAppearanceOverlay="@style/CircularImageView" />
+
+    <!-- Название песни -->
+    <TextView
+        android:id="@+id/song_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/album_art"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp" />
+
+    <!-- Имя исполнителя -->
+    <TextView
+        android:id="@+id/artist_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/song_title"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <!-- Кнопки управления воспроизведением -->
+    <LinearLayout
+        android:id="@+id/control_buttons2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/back_10"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="29dp"
+            android:background="@drawable/ic_forward2"
+
+            />
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/ic_back" />
+
+
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="29dp"
+            android:background="@color/white" />
+
+
+
+        <ImageButton
+            android:id="@+id/next_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_next" />
+
+        <ImageButton
+            android:id="@+id/next_10"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="30dp"
+            android:scaleX="-1"
+            android:background="@drawable/ic_forward2" />
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/progress_bar"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/song_title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="134dp"
+        android:progress="10"
+        android:progressTint="@android:color/black"
+        android:thumbTint="@android:color/black" />
+
+    <!-- Текущее и общее время -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress_bar"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            android:id="@+id/current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="0:04"
+            android:textColor="@android:color/black" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/total_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="4:32"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <!-- Дополнительные кнопки управления -->
+    <LinearLayout
+        android:id="@+id/control_buttons"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/song_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.HomeFragment">
+
+    <!-- Bottom player layout for song controls -->
+    <RelativeLayout
+        android:id="@+id/playerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/mini_player"
+        android:elevation="4dp"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/album_cover"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundedImageView" />
+
+        <!-- Song title text view -->
+        <TextView
+            android:id="@+id/song_title"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="8dp"
+            android:layout_toEndOf="@id/album_cover"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Неизвестно"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- Artist name text view -->
+        <TextView
+            android:id="@+id/artist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/song_title"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/album_cover"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Неизвестно"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <!-- Previous song button -->
+        <ImageButton
+            android:id="@+id/prev_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="130dp"
+            android:background="@null"
+            android:src="@android:drawable/ic_media_previous" />
+
+        <!-- Play/Pause button -->
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@id/next_button"
+            android:background="@null"
+            android:src="@android:drawable/ic_media_play" />
+
+        <!-- Next song button -->
+        <ImageButton
+            android:id="@+id/next_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@id/ic_add_to_favourite"
+            android:background="@null"
+            android:src="@android:drawable/ic_media_next" />
+
+        <!-- Menu button -->
+        <ImageButton
+            android:id="@+id/ic_add_to_favourite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ic_favourite"
+            android:backgroundTint="@color/white" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/songListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:padding="10dp" />
+</RelativeLayout>

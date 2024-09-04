@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.m.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_recentFragment"
+            app:destination="@id/recentFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_recent2Fragment"
+            app:destination="@id/recent2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.example.m.fragments.FavouriteFragment"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.example.m.fragments.PlayerFragment"
+        android:label="PlayerFragment" />
+    <fragment
+        android:id="@+id/recentFragment"
+        android:name="com.example.m.fragments.RecentFragment"
+        android:label="RecentFragment" >
+        <action
+            android:id="@+id/action_recentFragment_to_playlistFragment"
+            app:destination="@id/playlistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playlistFragment"
+        android:name="com.example.m.fragments.PlaylistFragment"
+        android:label="PlaylistFragment" />
+    <fragment
+        android:id="@+id/recent2Fragment"
+        android:name="com.example.m.fragments.Recent2Fragment"
+        android:label="fragment_recent2"
+        tools:layout="@layout/fragment_recent2" />
+</navigation>
