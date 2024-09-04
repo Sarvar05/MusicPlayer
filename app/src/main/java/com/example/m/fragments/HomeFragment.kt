@@ -92,27 +92,27 @@ class HomeFragment : Fragment() {
         val addToFavouriteButton = view.findViewById<ImageButton>(R.id.ic_add_to_favourite)
 
 
-        // Enable scrolling effect for song title
+       
         songTitleTextView.isSelected = true
 
-        // Load song list and favorites
+      
         loadSongs()
         loadFavourites()
 
-        // Setup adapter for ListView
+       
         val songAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, songList)
         songListView.adapter = songAdapter
 
-        // Set item click listener for ListView
+      
         songListView.setOnItemClickListener { _, _, position, _ ->
             playSong(position)
         }
 
-        // Register context menu
+       
         registerForContextMenu(songListView)
 
-        // Handle Play/Pause button click
+        
         playButton.setOnClickListener {
             if (mediaPlayerViewModel.isPlaying.value == true) {
                 mediaPlayerViewModel.pauseSong()
@@ -123,14 +123,14 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // Handle Previous button click
+       
         prevButton.setOnClickListener {
             if (currentSongIndex > 0) {
                 playSong(currentSongIndex - 1)
             }
         }
 
-        // Handle Next button click
+        
         nextButton.setOnClickListener {
             if (currentSongIndex < songList.size - 1) {
                 playSong(currentSongIndex + 1)
@@ -141,7 +141,7 @@ class HomeFragment : Fragment() {
 
         }
 
-        // Handle mini player click
+       
         playerLayout.setOnClickListener {
             if (currentPlayerPosition >= 0) {
                 openPlayerFragment()
@@ -150,7 +150,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // Observe mediaPlayerViewModel for UI updates
+       
         mediaPlayerViewModel.isPlaying.observe(viewLifecycleOwner) { isPlaying ->
             playButton.setImageResource(if (isPlaying) android.R.drawable.ic_media_pause else android.R.drawable.ic_media_play)
         }
@@ -170,7 +170,7 @@ class HomeFragment : Fragment() {
         }
 
 
-        // Handle fragment arguments (if any)
+       
         arguments?.let {
             val songName = it.getString("SONG_NAME")
             val songUri = it.getString("SONG_URI")
