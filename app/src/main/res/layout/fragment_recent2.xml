@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Recent2Fragment">
 
-    <!-- ListView для отображения элементов плейлиста -->
+
     <ListView
         android:id="@+id/recentListView"
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:focusable="true"
         android:padding="10dp" />
 
-    <!-- RelativeLayout для мини-плеера -->
+
     <RelativeLayout
         android:id="@+id/playerLayout"
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
-        <!-- Название песни -->
+        >
         <TextView
             android:id="@+id/song_title"
             android:layout_width="150dp"
@@ -59,7 +59,7 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <!-- Исполнитель -->
+
         <TextView
             android:id="@+id/artist_name"
             android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
             android:src="@android:drawable/ic_media_next"
             android:background="@null" />
 
-        <!-- Кнопка меню -->
+
         <ImageButton
             android:id="@+id/menu_button"
             android:layout_width="24dp"
@@ -111,8 +111,8 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/ic_playlist"
-            android:backgroundTint="@color/white" />
+            android:background="#9a7adf"
+            />
     </RelativeLayout>
 
 </RelativeLayout>

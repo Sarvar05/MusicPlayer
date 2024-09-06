@@ -2,8 +2,10 @@ package com.example.m.models
 
 import android.os.Parcel
 import android.os.Parcelable
-data class Playlist(val name: String, val songs: List<String> = mutableListOf()) : Parcelable {
-
+data class Playlist(
+    val name: String,
+    val songs: MutableList<String> = mutableListOf()
+) : Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",

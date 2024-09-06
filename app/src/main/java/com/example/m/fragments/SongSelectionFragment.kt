@@ -33,7 +33,7 @@ class SongSelectionFragment : Fragment() {
         fun newInstance(playlist: Playlist): SongSelectionFragment {
             val fragment = SongSelectionFragment()
             val args = Bundle()
-            args.putParcelable("playlist", playlist) // Убедитесь, что ваш Playlist класс реализует Parcelable
+            args.putParcelable("playlist", playlist)
             fragment.arguments = args
             return fragment
         }
@@ -59,7 +59,7 @@ class SongSelectionFragment : Fragment() {
             onDone()
         }
 
-        val songs = getAvailableSongs() // Получите список доступных песен
+        val songs = getAvailableSongs()
         songAdapter = SongAdapter(requireContext(), songs)
         songsListView.adapter = songAdapter
 
@@ -106,12 +106,10 @@ class SongSelectionFragment : Fragment() {
     private fun addSelectedSongsToPlaylist() {
         val selectedSongs = songAdapter.getSelectedSongs()
         selectedPlaylist?.let { playlist ->
-            // Убедитесь, что у вас есть способ добавить песни в плейлист
+
             for (songName in selectedSongs) {
                 val songUri = getSongUri(songName)
-                // Добавьте URI песни в плейлист
-                // Например, сохраните URI в базе данных или обновите плейлист
-                // пример: playlist.addSong(songUri)
+
             }
         }
     }
@@ -147,7 +145,7 @@ class SongSelectionFragment : Fragment() {
         result.putParcelable("playlist", playlist)
         parentFragmentManager.setFragmentResult("playlist_request_key", result)
 
-        // Закрываем текущий фрагмент
+
         parentFragmentManager.popBackStack()
     }
 }

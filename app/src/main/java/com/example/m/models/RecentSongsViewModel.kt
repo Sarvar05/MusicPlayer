@@ -49,7 +49,7 @@ class RecentSongsViewModel(application: Application) : AndroidViewModel(applicat
                 updatedList.removeAt(updatedList.size - 1)
             }
 
-           //тут первый обновляет а второй сохраняет
+
             _recentSongs.postValue(updatedList)
             recentSongDao.insertRecentSong(song)
         }

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Верхняя навигационная панель -->
+
     <RelativeLayout
         android:id="@+id/top_navigation"
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:background="@android:color/transparent"
         android:padding="8dp">
 
-        <!-- SeekBar для громкости (вертикальный) -->
+
         <SeekBar
             android:id="@+id/volume_seek_bar"
             android:layout_width="300dp"
@@ -38,7 +38,7 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <!-- Альбомная обложка -->
+    >
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/album_art"
         android:layout_width="200dp"
@@ -49,7 +49,7 @@
         app:strokeColor="@color/black"
         app:shapeAppearanceOverlay="@style/CircularImageView" />
 
-    <!-- Название песни -->
+
     <TextView
         android:id="@+id/song_title"
         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp" />
 
-    <!-- Имя исполнителя -->
+
     <TextView
         android:id="@+id/artist_name"
         android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
         android:textColor="@android:color/black"
         android:textSize="14sp" />
 
-    <!-- Кнопки управления воспроизведением -->
+
     <LinearLayout
         android:id="@+id/control_buttons2"
         android:layout_width="wrap_content"
@@ -141,7 +141,7 @@
         android:progressTint="@android:color/black"
         android:thumbTint="@android:color/black" />
 
-    <!-- Текущее и общее время -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
             android:textColor="@android:color/black" />
     </LinearLayout>
 
-    <!-- Дополнительные кнопки управления -->
+
     <LinearLayout
         android:id="@+id/control_buttons"
         android:layout_width="350dp"

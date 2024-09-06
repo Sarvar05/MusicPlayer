@@ -26,10 +26,9 @@ class SongAdapter(
         val songName = getItem(position) ?: return view
         songTitleTextView.text = songName
 
-        // Update CheckBox state based on whether the song is selected
         songCheckBox.isChecked = selectedSongs.contains(songName)
 
-        // Set listener to update selectedSongs when CheckBox state changes
+
         songCheckBox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 selectedSongs.add(songName)

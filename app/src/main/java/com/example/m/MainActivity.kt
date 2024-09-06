@@ -40,6 +40,7 @@ import com.example.m.fragments.ResearchFragment
 import com.example.m.models.MediaPlayerService1
 import com.example.m.models.MediaPlayerService
 import com.example.m.models.PlaylistViewModel
+import com.example.m.playlist.PlaylistViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -96,8 +97,8 @@ class MainActivity : AppCompatActivity() {
         if (isPlaying && songName != null) {
             updateMiniPlayer(songName)
         }
-
-        playlistViewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
+        val factory = PlaylistViewModelFactory(applicationContext)
+        playlistViewModel = ViewModelProvider(this, factory).get(PlaylistViewModel::class.java)
         viewPager = findViewById(R.id.viewPager)
         tabLayout = findViewById(R.id.tabLayout)
         fragmentContainer = findViewById(R.id.fragment_container)

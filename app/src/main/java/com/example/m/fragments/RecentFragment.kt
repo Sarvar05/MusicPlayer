@@ -19,6 +19,7 @@ import com.example.m.MainActivity
 import com.example.m.R
 import com.example.m.models.Playlist
 import com.example.m.models.PlaylistViewModel
+import com.example.m.playlist.PlaylistViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -37,7 +38,8 @@ class RecentFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_recent, container, false)
         listView = view.findViewById(R.id.listView)
         fab = view.findViewById(R.id.fab)
-        viewModel = ViewModelProvider(requireActivity()).get(PlaylistViewModel::class.java)
+        val factory = PlaylistViewModelFactory(requireContext())
+        viewModel = ViewModelProvider(this, factory).get(PlaylistViewModel::class.java)
         setupListView()
         setupFab()
         return view
@@ -111,7 +113,7 @@ class RecentFragment : Fragment() {
         viewModel.addPlaylist(newPlaylist)
         Log.d("RecentFragment", "New playlist added: $newPlaylist")
 
-
+        openPlaylist(newPlaylist)
 
     }
 

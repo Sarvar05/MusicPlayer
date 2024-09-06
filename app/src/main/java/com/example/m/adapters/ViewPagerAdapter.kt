@@ -11,7 +11,7 @@ import com.example.m.fragments.RecentFragment
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
 
-    override fun getItemCount(): Int = 4 // Number of fragments
+    override fun getItemCount(): Int = 4
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
@@ -21,7 +21,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
             3 -> RecentFragment()
 
 
-            else -> HomeFragment() // Fallback fragment
+            else -> HomeFragment()
         }
     }
 

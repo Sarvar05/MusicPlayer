@@ -299,13 +299,13 @@ class MediaPlayerViewModel(application: Application) : AndroidViewModel(applicat
                     if (mp.isPlaying) {
                         Handler(Looper.getMainLooper()).postDelayed({
                             updatePosition()
-                        }, 1000) // Update every second
+                        }, 1000)
                     } else {
 
                     }
                 } catch (e: IllegalStateException) {
                     Log.e("MediaPlayerViewModel", "Error getting current position: ${e.message}")
-                    resetMediaPlayer() // Safeguard by resetting the media player on error
+                    resetMediaPlayer()
                 }
             } else {
                 Log.e("MediaPlayerViewModel", "MediaPlayer is not prepared")

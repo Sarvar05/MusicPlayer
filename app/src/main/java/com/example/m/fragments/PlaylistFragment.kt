@@ -31,7 +31,6 @@ import com.example.m.models.MediaPlayerViewModel
 import com.example.m.models.Playlist
 import com.google.android.material.imageview.ShapeableImageView
 
-
 class PlaylistFragment : Fragment() {
 
     private lateinit var playlist: Playlist
@@ -49,7 +48,8 @@ class PlaylistFragment : Fragment() {
         uri?.let {
             val songName = getSongName(it)
             viewModel.addSongToPlaylist(playlist, songName)
-            songsAdapter.notifyDataSetChanged()
+
+            updateSongList()
         }
     }
 
@@ -77,9 +77,16 @@ class PlaylistFragment : Fragment() {
         songTitleTextView = view.findViewById(R.id.song_title)
         albumArtImageView = view.findViewById(R.id.album_cover)
         addButton = view.findViewById(R.id.addButton)
+
         view.findViewById<TextView>(R.id.playlist_title).text = playlist.name
+
+
         viewModel = ViewModelProvider(requireActivity()).get(PlaylistViewModel::class.java)
         mediaPlayerViewModel = ViewModelProvider(requireActivity()).get(MediaPlayerViewModel::class.java)
+
+
+        songsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, playlist.songs)
+        songsListView.adapter = songsAdapter
 
         songTitleTextView.isSelected = true
         setupListView()
@@ -112,7 +119,8 @@ class PlaylistFragment : Fragment() {
                 val selectedSongs = bundle.getStringArray("selected_songs")?.toList() ?: emptyList()
                 if (selectedSongs.isNotEmpty()) {
                     viewModel.addSongsToPlaylist(playlist, selectedSongs)
-                    songsAdapter.notifyDataSetChanged()
+
+                    updateSongList()
                 }
             }
         }
@@ -121,16 +129,14 @@ class PlaylistFragment : Fragment() {
     }
 
     private fun setupListView() {
-        songsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, playlist.songs)
-        songsListView.adapter = songsAdapter
-
         songsListView.setOnItemClickListener { _, _, position, _ ->
             currentSongIndex = position
             playSong(playlist.songs[position])
         }
 
-        viewModel.playlists.observe(viewLifecycleOwner) {
-            songsAdapter.notifyDataSetChanged()
+        viewModel.playlists.observe(viewLifecycleOwner) { playlists ->
+
+            updateSongList()
         }
     }
 
@@ -141,6 +147,15 @@ class PlaylistFragment : Fragment() {
                 .replace(R.id.fragment_container, songSelectionFragment)
                 .addToBackStack(null)
                 .commit()
+        }
+    }
+
+    private fun updateSongList() {
+        val updatedPlaylist = viewModel.playlists.value?.find { it.name == playlist.name }
+        if (updatedPlaylist != null) {
+            playlist.songs.clear()
+            playlist.songs.addAll(updatedPlaylist.songs)
+            songsAdapter.notifyDataSetChanged()
         }
     }
 
@@ -246,6 +261,7 @@ class PlaylistFragment : Fragment() {
             val mediaMetadataRetriever = MediaMetadataRetriever()
             mediaMetadataRetriever.setDataSource(requireContext(), songUri)
             val albumArt = mediaMetadataRetriever.embeddedPicture
+
             if (albumArt != null) {
                 val bitmap = BitmapFactory.decodeByteArray(albumArt, 0, albumArt.size)
                 albumArtImageView.setImageBitmap(bitmap)
@@ -254,14 +270,21 @@ class PlaylistFragment : Fragment() {
             }
         } catch (e: Exception) {
             Log.e("PlaylistFragment", "Error setting album art", e)
+            albumArtImageView.setImageResource(R.drawable.ic_music_note)
+        }
+    }
+    companion object {
+        private const val ARG_PLAYLIST = "playlist"
+
+        fun newInstance(playlist: Playlist): PlaylistFragment {
+            val fragment = PlaylistFragment()
+            val args = Bundle().apply {
+                putParcelable(ARG_PLAYLIST, playlist)
+            }
+            fragment.arguments = args
+            return fragment
         }
     }
 
-    companion object {
-        fun newInstance(playlist: Playlist) = PlaylistFragment().apply {
-            arguments = Bundle().apply {
-                putParcelable("playlist", playlist)
-            }
-        }
-    }
+
 }
