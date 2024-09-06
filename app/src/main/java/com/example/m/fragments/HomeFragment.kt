@@ -92,6 +92,7 @@ class HomeFragment : Fragment() {
         val addToFavouriteButton = view.findViewById<ImageButton>(R.id.ic_add_to_favourite)
 
 
+<<<<<<< HEAD
         songTitleTextView.isSelected = true
 
 
@@ -99,19 +100,40 @@ class HomeFragment : Fragment() {
         loadFavourites()
 
 
+=======
+       
+        songTitleTextView.isSelected = true
+
+      
+        loadSongs()
+        loadFavourites()
+
+       
+>>>>>>> 7d0135a88058034c4ea6f88608277b78cd5ce2d8
         val songAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, songList)
         songListView.adapter = songAdapter
 
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 7d0135a88058034c4ea6f88608277b78cd5ce2d8
         songListView.setOnItemClickListener { _, _, position, _ ->
             playSong(position)
         }
 
+<<<<<<< HEAD
 
         registerForContextMenu(songListView)
 
 
+=======
+       
+        registerForContextMenu(songListView)
+
+        
+>>>>>>> 7d0135a88058034c4ea6f88608277b78cd5ce2d8
         playButton.setOnClickListener {
             if (mediaPlayerViewModel.isPlaying.value == true) {
                 mediaPlayerViewModel.pauseSong()
@@ -122,14 +144,22 @@ class HomeFragment : Fragment() {
             }
         }
 
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> 7d0135a88058034c4ea6f88608277b78cd5ce2d8
         prevButton.setOnClickListener {
             if (currentSongIndex > 0) {
                 playSong(currentSongIndex - 1)
             }
         }
 
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 7d0135a88058034c4ea6f88608277b78cd5ce2d8
         nextButton.setOnClickListener {
             if (currentSongIndex < songList.size - 1) {
                 playSong(currentSongIndex + 1)
@@ -140,6 +170,10 @@ class HomeFragment : Fragment() {
 
         }
 
+<<<<<<< HEAD
+=======
+       
+>>>>>>> 7d0135a88058034c4ea6f88608277b78cd5ce2d8
         playerLayout.setOnClickListener {
             if (currentPlayerPosition >= 0) {
                 openPlayerFragment()
@@ -148,6 +182,10 @@ class HomeFragment : Fragment() {
             }
         }
 
+<<<<<<< HEAD
+=======
+       
+>>>>>>> 7d0135a88058034c4ea6f88608277b78cd5ce2d8
         mediaPlayerViewModel.isPlaying.observe(viewLifecycleOwner) { isPlaying ->
             playButton.setImageResource(if (isPlaying) android.R.drawable.ic_media_pause else android.R.drawable.ic_media_play)
         }
@@ -167,6 +205,10 @@ class HomeFragment : Fragment() {
         }
 
 
+<<<<<<< HEAD
+=======
+       
+>>>>>>> 7d0135a88058034c4ea6f88608277b78cd5ce2d8
         arguments?.let {
             val songName = it.getString("SONG_NAME")
             val songUri = it.getString("SONG_URI")
